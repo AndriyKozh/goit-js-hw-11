@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page title</title>
+
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <form class="search-form" id="search-form">
       <input
-        class="input-el"
         type="text"
         name="searchQuery"
         autocomplete="off"
         placeholder="Search images..."
       />
-      <button class="btn" type="submit">
-        <svg width="20" height="20">
-          <use href="./icon/symbol-defs.svg#icon-icons8-search-2"></use>
-        </svg>
-      </button>
+      <button type="submit">Search</button>
     </form>
+    <div class="gallery">
+      <!-- Картки зображень -->
+    </div>
+    <button type="button" class="load-more">Load more</button>
 
-    <script src="./index.js"></script>
+    <script src="./index.js" type="modele"></script>
   </body>
 </html>

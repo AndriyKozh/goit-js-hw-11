@@ -1,6 +1,10 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+}
+body {
+  margin-bottom: 40px;
 }
 .search-form {
   background-color: blue;
@@ -23,4 +27,39 @@
   border-radius: 0px 40px 40px 0px;
   cursor: pointer;
   width: 30px;
+}
+
+.gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 300px;
+  height: 200px;
+}
+.photo-card {
+  margin: 10px;
+}
+.info-item {
+  display: flex;
+  color: black;
+}
+.load-more {
+  display: none;
+}
+.load-more-app {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: rgb(46, 140, 255);
+  color: #ffffff;
+  border-radius: 4px;
+}
+body .load-more-app {
+  display: flex;
 }
