@@ -68,8 +68,6 @@ function render(items) {
 
   refs.gallery.insertAdjacentHTML('beforeend', list);
 
-  lightbox();
-
   try {
     if (itemsLangth > 0) {
       refs.buttonApp.classList.add('load-more-app');
