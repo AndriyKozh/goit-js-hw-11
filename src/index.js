@@ -74,18 +74,11 @@ function render(items) {
     if (itemsLangth > 0) {
       refs.buttonApp.classList.add('load-more-app');
     }
-    if (listPhoto > itemsLangth) {
+    if (listPhoto > itemsLangth && itemsLangth !== 0) {
       refs.buttonApp.classList.remove('load-more-app');
       Notiflix.Notify.info(
         `We're sorry, but you've reached the end of search results."`
       );
-      return;
-    }
-    if (itemsLangth === 0) {
-      Notiflix.Notify.failure(
-        '"Sorry, there are no images matching your search query. Please try again."'
-      );
-
       return;
     }
   } catch (error) {
@@ -94,12 +87,29 @@ function render(items) {
   notifiEl(itemsLangth);
 }
 
-// function notifiEl(itemsLangth) {}
+function notifiEl(itemsLangth) {
+  if (itemsLangth === 0) {
+    Notiflix.Notify.failure(
+      '"Sorry, there are no images matching your search query. Please try again."'
+    );
+    // refs.buttonApp.classList.remove('load-more-app');
 
-// function onLoadMore() {
-//   page += 1;
-//   fetchData();
-// }
+    return;
+  }
+
+  if (itemsLangth === item.totalHits) {
+    Notiflix.Report.success(
+      'Were sorry, but youve reached the end of search results.'
+    );
+    refs.buttonApp.classList.remove('load-more-app');
+    return;
+  }
+}
+
+function onLoadMore() {
+  page += 1;
+  fetchData();
+}
 
 function onHandleSabmit(ev) {
   ev.preventDefault();
@@ -110,6 +120,7 @@ function onHandleSabmit(ev) {
     Notiflix.Notify.failure(
       'Sorry, there are no images matching your search query. Please try again.'
     );
+    refs.buttonApp.classList.remove('load-more-app');
 
     return;
   }
@@ -121,16 +132,14 @@ function lightbox() {
   new SimpleLightbox('a', {
     fadeSpeed: '300',
     scrollZoom: true,
-
+    animationSpeed: '250',
     doubleTapZoom: 2,
     disableScroll: true,
-    animationSpeed: '250',
   }).refresh();
 }
-
 function clearArticlesContainer() {
   refs.gallery.innerHTML = '';
 }
 
-// refs.buttonApp.addEventListener('click', onLoadMore);
+refs.buttonApp.addEventListener('click', onLoadMore);
 refs.form.addEventListener('submit', onHandleSabmit);
