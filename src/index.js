@@ -15,7 +15,7 @@ const refs = {
 const Key = '29524471-b67b2b2d9f34edfb071a81463';
 const URL = 'https://pixabay.com/api';
 let filters = `&image_type=photo&orientation=horizontal&safesearch=true`;
-let listPhoto = 10;
+let listPhoto = 40;
 let page = 1;
 let item = [];
 let query = '';
@@ -84,6 +84,7 @@ function render(items) {
   } catch (error) {
     console.log(error.message);
   }
+  lightbox();
   notifiEl(itemsLangth);
 }
 
@@ -108,6 +109,7 @@ function notifiEl(itemsLangth) {
 
 function onLoadMore() {
   page += 1;
+
   fetchData();
 }
 
@@ -129,7 +131,7 @@ function onHandleSabmit(ev) {
 }
 
 function lightbox() {
-  new SimpleLightbox('a', {
+  new SimpleLightbox(' a', {
     fadeSpeed: '300',
     scrollZoom: true,
     animationSpeed: '250',
@@ -137,6 +139,7 @@ function lightbox() {
     disableScroll: true,
   }).refresh();
 }
+
 function clearArticlesContainer() {
   refs.gallery.innerHTML = '';
 }
